@@ -1,31 +1,29 @@
-"use strict";
-
-const { Model } = require("sequelize")
-module.exports = (Sequelize, DataTypes) => {
-    class hotel extends Model {
-        static associate(models) {
-            hotel.belongsTo(models.user, {
-                foreignKey: {
-                    name: "id_hotel"
-                }
-            })
-        }
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class hotel extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
     }
-    auth.init(
-        {
-        id_hotel: DataTypes.INTEGER,
-        hotel_name: DataTypes.STRING,
-        hotel_desc: DataTypes.STRING,
-        hotel_address: DataTypes.STRING,
-        hotel_city: DataTypes.STRING,
-        hotel_photos: DataTypes.STRING,
-        hotel_price: DataTypes.INTEGER,
-        hotel_rating: { type: DataTypes.INTEGER, min: 0, max: 5 },
-        },
-        {
-            Sequelize,
-            modelName: "hotel"
-        }
-    );
-    return hotel;
+  }
+  hotel.init({
+    hotel_name: DataTypes.STRING,
+    hotel_desc: DataTypes.STRING,
+    hotel_addres: DataTypes.STRING,
+    hotel_city: DataTypes.STRING,
+    hotel_photo: DataTypes.STRING,
+    hotel_harga: DataTypes.INTEGER,
+    hotel_rating: DataTypes.FLOAT
+  }, {
+    sequelize,
+    modelName: 'hotel',
+  });
+  return hotel;
 };
